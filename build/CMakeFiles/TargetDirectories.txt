@@ -1,0 +1,7 @@
+/media/wanner/work/work/software/xmrig/build/CMakeFiles/rebuild_cache.dir
+/media/wanner/work/work/software/xmrig/build/CMakeFiles/edit_cache.dir
+/media/wanner/work/work/software/xmrig/build/CMakeFiles/xmrig-asm.dir
+/media/wanner/work/work/software/xmrig/build/CMakeFiles/xmrig.dir
+/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/rebuild_cache.dir
+/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir
+/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/edit_cache.dir

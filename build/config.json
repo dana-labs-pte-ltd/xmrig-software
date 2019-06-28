@@ -1,0 +1,43 @@
+{
+    "algo": "cryptonight",
+    "api": {
+        "port": 0,
+        "access-token": null,
+        "id": null,
+        "worker-id": null,
+        "ipv6": false,
+        "restricted": true
+    },
+    "asm": false,
+    "autosave": true,
+    "av": 0,
+    "background": false,
+    "colors": true,
+    "cpu-affinity": null,
+    "cpu-priority": null,
+    "donate-level": 5,
+    "huge-pages": true,
+    "hw-aes": null,
+    "log-file": null,
+    "max-cpu-usage": 100,
+    "pools": [
+        {
+            "url": "mine.moneropool.com:7777",
+            "user": "42N2AcSCzGCHUPh3aLpuFJYjP1HPCu1eZ26xJxLzxQRsEutBv1YRAGmjhspNaY5JRpG38E5v43wYQAnnVFpw4o9sC5Trtxw",
+            "pass": "worker",
+            "rig-id": null,
+            "nicehash": false,
+            "keepalive": false,
+            "variant": "r",
+            "tls": false,
+            "tls-fingerprint": null
+        }
+    ],
+    "print-time": 60,
+    "retries": 5,
+    "retry-pause": 5,
+    "safe": false,
+    "threads": 1,
+    "user-agent": null,
+    "watch": true
+}
