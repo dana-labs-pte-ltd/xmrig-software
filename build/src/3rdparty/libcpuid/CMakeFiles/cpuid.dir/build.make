@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/wanner/work/work/software/xmrig
+CMAKE_SOURCE_DIR = /media/wanner/work/work/software/xmrig-software
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/wanner/work/work/software/xmrig/build
+CMAKE_BINARY_DIR = /media/wanner/work/work/software/xmrig-software/build
 
 # Include any dependencies generated for this target.
 include src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/depend.make
@@ -59,16 +59,16 @@ include src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/flags.make
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/flags.make
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o: ../src/3rdparty/libcpuid/cpuid_main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/cpuid_main.c.o   -c /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/cpuid_main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig-software/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o"
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/cpuid_main.c.o   -c /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/cpuid_main.c
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cpuid.dir/cpuid_main.c.i"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/cpuid_main.c > CMakeFiles/cpuid.dir/cpuid_main.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/cpuid_main.c > CMakeFiles/cpuid.dir/cpuid_main.c.i
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpuid.dir/cpuid_main.c.s"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/cpuid_main.c -o CMakeFiles/cpuid.dir/cpuid_main.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/cpuid_main.c -o CMakeFiles/cpuid.dir/cpuid_main.c.s
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o.requires:
 
@@ -83,16 +83,16 @@ src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o.provides.build: src/3r
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/flags.make
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o: ../src/3rdparty/libcpuid/asm-bits.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/asm-bits.c.o   -c /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/asm-bits.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig-software/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o"
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/asm-bits.c.o   -c /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/asm-bits.c
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cpuid.dir/asm-bits.c.i"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/asm-bits.c > CMakeFiles/cpuid.dir/asm-bits.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/asm-bits.c > CMakeFiles/cpuid.dir/asm-bits.c.i
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpuid.dir/asm-bits.c.s"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/asm-bits.c -o CMakeFiles/cpuid.dir/asm-bits.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/asm-bits.c -o CMakeFiles/cpuid.dir/asm-bits.c.s
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o.requires:
 
@@ -107,16 +107,16 @@ src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o.provides.build: src/3rdp
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/flags.make
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o: ../src/3rdparty/libcpuid/recog_amd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/recog_amd.c.o   -c /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_amd.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig-software/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o"
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/recog_amd.c.o   -c /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_amd.c
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cpuid.dir/recog_amd.c.i"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_amd.c > CMakeFiles/cpuid.dir/recog_amd.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_amd.c > CMakeFiles/cpuid.dir/recog_amd.c.i
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpuid.dir/recog_amd.c.s"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_amd.c -o CMakeFiles/cpuid.dir/recog_amd.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_amd.c -o CMakeFiles/cpuid.dir/recog_amd.c.s
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o.requires:
 
@@ -131,16 +131,16 @@ src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o.provides.build: src/3rd
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/flags.make
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o: ../src/3rdparty/libcpuid/recog_intel.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/recog_intel.c.o   -c /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_intel.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig-software/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o"
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/recog_intel.c.o   -c /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_intel.c
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cpuid.dir/recog_intel.c.i"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_intel.c > CMakeFiles/cpuid.dir/recog_intel.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_intel.c > CMakeFiles/cpuid.dir/recog_intel.c.i
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpuid.dir/recog_intel.c.s"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_intel.c -o CMakeFiles/cpuid.dir/recog_intel.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_intel.c -o CMakeFiles/cpuid.dir/recog_intel.c.s
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o.requires:
 
@@ -155,16 +155,16 @@ src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o.provides.build: src/3
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/flags.make
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o: ../src/3rdparty/libcpuid/libcpuid_util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/libcpuid_util.c.o   -c /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/libcpuid_util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/wanner/work/work/software/xmrig-software/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o"
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/cpuid.dir/libcpuid_util.c.o   -c /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/libcpuid_util.c
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/cpuid.dir/libcpuid_util.c.i"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/libcpuid_util.c > CMakeFiles/cpuid.dir/libcpuid_util.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/libcpuid_util.c > CMakeFiles/cpuid.dir/libcpuid_util.c.i
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/cpuid.dir/libcpuid_util.c.s"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/libcpuid_util.c -o CMakeFiles/cpuid.dir/libcpuid_util.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/libcpuid_util.c -o CMakeFiles/cpuid.dir/libcpuid_util.c.s
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o.requires:
 
@@ -195,9 +195,9 @@ src/3rdparty/libcpuid/libcpuid.a: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/rec
 src/3rdparty/libcpuid/libcpuid.a: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o
 src/3rdparty/libcpuid/libcpuid.a: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make
 src/3rdparty/libcpuid/libcpuid.a: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/wanner/work/work/software/xmrig/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libcpuid.a"
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && $(CMAKE_COMMAND) -P CMakeFiles/cpuid.dir/cmake_clean_target.cmake
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpuid.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/wanner/work/work/software/xmrig-software/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C static library libcpuid.a"
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && $(CMAKE_COMMAND) -P CMakeFiles/cpuid.dir/cmake_clean_target.cmake
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpuid.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build: src/3rdparty/libcpuid/libcpuid.a
@@ -213,10 +213,10 @@ src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/requires: src/3rdparty/libcpuid/CMake
 .PHONY : src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/requires
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/clean:
-	cd /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid && $(CMAKE_COMMAND) -P CMakeFiles/cpuid.dir/cmake_clean.cmake
+	cd /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid && $(CMAKE_COMMAND) -P CMakeFiles/cpuid.dir/cmake_clean.cmake
 .PHONY : src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/clean
 
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/depend:
-	cd /media/wanner/work/work/software/xmrig/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/wanner/work/work/software/xmrig /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid /media/wanner/work/work/software/xmrig/build /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/wanner/work/work/software/xmrig-software/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/wanner/work/work/software/xmrig-software /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid /media/wanner/work/work/software/xmrig-software/build /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/depend
 

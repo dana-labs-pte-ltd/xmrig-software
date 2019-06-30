@@ -1,4 +1,4 @@
-# Install script for directory: /media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid
+# Install script for directory: /media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

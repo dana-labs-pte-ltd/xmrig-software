@@ -6,5 +6,5 @@ ASM_FLAGS = -g
 
 ASM_DEFINES = -DHAVE_ROTR -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D_GNU_SOURCE -D__STDC_FORMAT_MACROS
 
-ASM_INCLUDES = -I/media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid -I/usr/include -I/media/wanner/work/work/software/xmrig/src -I/media/wanner/work/work/software/xmrig/src/3rdparty 
+ASM_INCLUDES = -I/media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid -I/usr/include -I/media/wanner/work/work/software/xmrig-software/src -I/media/wanner/work/work/software/xmrig-software/src/3rdparty 
 

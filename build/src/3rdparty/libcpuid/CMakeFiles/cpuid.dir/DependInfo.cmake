@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/asm-bits.c" "/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o"
-  "/media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/cpuid_main.c" "/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o"
-  "/media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/libcpuid_util.c" "/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o"
-  "/media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_amd.c" "/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o"
-  "/media/wanner/work/work/software/xmrig/src/3rdparty/libcpuid/recog_intel.c" "/media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o"
+  "/media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/asm-bits.c" "/media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o"
+  "/media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/cpuid_main.c" "/media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o"
+  "/media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/libcpuid_util.c" "/media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o"
+  "/media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_amd.c" "/media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o"
+  "/media/wanner/work/work/software/xmrig-software/src/3rdparty/libcpuid/recog_intel.c" "/media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/wanner/work/work/software/xmrig
+CMAKE_SOURCE_DIR = /media/wanner/work/work/software/xmrig-software
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/wanner/work/work/software/xmrig/build
+CMAKE_BINARY_DIR = /media/wanner/work/work/software/xmrig-software/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /media/wanner/work/work/software/xmrig/build && $(CMAKE_COMMAND) -E cmake_progress_start /media/wanner/work/work/software/xmrig/build/CMakeFiles /media/wanner/work/work/software/xmrig/build/src/3rdparty/libcpuid/CMakeFiles/progress.marks
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/wanner/work/work/software/xmrig/build/CMakeFiles 0
+	cd /media/wanner/work/work/software/xmrig-software/build && $(CMAKE_COMMAND) -E cmake_progress_start /media/wanner/work/work/software/xmrig-software/build/CMakeFiles /media/wanner/work/work/software/xmrig-software/build/src/3rdparty/libcpuid/CMakeFiles/progress.marks
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/wanner/work/work/software/xmrig-software/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/clean
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/preinstall
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/preinstall
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /media/wanner/work/work/software/xmrig/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /media/wanner/work/work/software/xmrig-software/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/rule:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/rule
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f CMakeFiles/Makefile2 src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/rule
 .PHONY : src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ cpuid: src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/rule
 
 # fast build rule for target.
 cpuid/fast:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build
 .PHONY : cpuid/fast
 
 asm-bits.o: asm-bits.c.o
@@ -131,7 +131,7 @@ asm-bits.o: asm-bits.c.o
 
 # target to build an object file
 asm-bits.c.o:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.o
 .PHONY : asm-bits.c.o
 
 asm-bits.i: asm-bits.c.i
@@ -140,7 +140,7 @@ asm-bits.i: asm-bits.c.i
 
 # target to preprocess a source file
 asm-bits.c.i:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.i
 .PHONY : asm-bits.c.i
 
 asm-bits.s: asm-bits.c.s
@@ -149,7 +149,7 @@ asm-bits.s: asm-bits.c.s
 
 # target to generate assembly for a file
 asm-bits.c.s:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/asm-bits.c.s
 .PHONY : asm-bits.c.s
 
 cpuid_main.o: cpuid_main.c.o
@@ -158,7 +158,7 @@ cpuid_main.o: cpuid_main.c.o
 
 # target to build an object file
 cpuid_main.c.o:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.o
 .PHONY : cpuid_main.c.o
 
 cpuid_main.i: cpuid_main.c.i
@@ -167,7 +167,7 @@ cpuid_main.i: cpuid_main.c.i
 
 # target to preprocess a source file
 cpuid_main.c.i:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.i
 .PHONY : cpuid_main.c.i
 
 cpuid_main.s: cpuid_main.c.s
@@ -176,7 +176,7 @@ cpuid_main.s: cpuid_main.c.s
 
 # target to generate assembly for a file
 cpuid_main.c.s:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/cpuid_main.c.s
 .PHONY : cpuid_main.c.s
 
 libcpuid_util.o: libcpuid_util.c.o
@@ -185,7 +185,7 @@ libcpuid_util.o: libcpuid_util.c.o
 
 # target to build an object file
 libcpuid_util.c.o:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.o
 .PHONY : libcpuid_util.c.o
 
 libcpuid_util.i: libcpuid_util.c.i
@@ -194,7 +194,7 @@ libcpuid_util.i: libcpuid_util.c.i
 
 # target to preprocess a source file
 libcpuid_util.c.i:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.i
 .PHONY : libcpuid_util.c.i
 
 libcpuid_util.s: libcpuid_util.c.s
@@ -203,7 +203,7 @@ libcpuid_util.s: libcpuid_util.c.s
 
 # target to generate assembly for a file
 libcpuid_util.c.s:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/libcpuid_util.c.s
 .PHONY : libcpuid_util.c.s
 
 recog_amd.o: recog_amd.c.o
@@ -212,7 +212,7 @@ recog_amd.o: recog_amd.c.o
 
 # target to build an object file
 recog_amd.c.o:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.o
 .PHONY : recog_amd.c.o
 
 recog_amd.i: recog_amd.c.i
@@ -221,7 +221,7 @@ recog_amd.i: recog_amd.c.i
 
 # target to preprocess a source file
 recog_amd.c.i:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.i
 .PHONY : recog_amd.c.i
 
 recog_amd.s: recog_amd.c.s
@@ -230,7 +230,7 @@ recog_amd.s: recog_amd.c.s
 
 # target to generate assembly for a file
 recog_amd.c.s:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_amd.c.s
 .PHONY : recog_amd.c.s
 
 recog_intel.o: recog_intel.c.o
@@ -239,7 +239,7 @@ recog_intel.o: recog_intel.c.o
 
 # target to build an object file
 recog_intel.c.o:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.o
 .PHONY : recog_intel.c.o
 
 recog_intel.i: recog_intel.c.i
@@ -248,7 +248,7 @@ recog_intel.i: recog_intel.c.i
 
 # target to preprocess a source file
 recog_intel.c.i:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.i
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.i
 .PHONY : recog_intel.c.i
 
 recog_intel.s: recog_intel.c.s
@@ -257,7 +257,7 @@ recog_intel.s: recog_intel.c.s
 
 # target to generate assembly for a file
 recog_intel.c.s:
-	cd /media/wanner/work/work/software/xmrig/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.s
+	cd /media/wanner/work/work/software/xmrig-software/build && $(MAKE) -f src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/build.make src/3rdparty/libcpuid/CMakeFiles/cpuid.dir/recog_intel.c.s
 .PHONY : recog_intel.c.s
 
 # Help Target
@@ -295,6 +295,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /media/wanner/work/work/software/xmrig/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /media/wanner/work/work/software/xmrig-software/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_ASM
-  "/media/wanner/work/work/software/xmrig/src/crypto/asm/CryptonightR_template.S" "/media/wanner/work/work/software/xmrig/build/CMakeFiles/xmrig-asm.dir/src/crypto/asm/CryptonightR_template.S.o"
-  "/media/wanner/work/work/software/xmrig/src/crypto/asm/cn_main_loop.S" "/media/wanner/work/work/software/xmrig/build/CMakeFiles/xmrig-asm.dir/src/crypto/asm/cn_main_loop.S.o"
+  "/media/wanner/work/work/software/xmrig-software/src/crypto/asm/CryptonightR_template.S" "/media/wanner/work/work/software/xmrig-software/build/CMakeFiles/xmrig-asm.dir/src/crypto/asm/CryptonightR_template.S.o"
+  "/media/wanner/work/work/software/xmrig-software/src/crypto/asm/cn_main_loop.S" "/media/wanner/work/work/software/xmrig-software/build/CMakeFiles/xmrig-asm.dir/src/crypto/asm/cn_main_loop.S.o"
   )
 set(CMAKE_ASM_COMPILER_ID "GNU")
 
