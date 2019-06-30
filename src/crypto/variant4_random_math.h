@@ -6,6 +6,12 @@ extern "C"
     #include "c_blake256.h"
 }
 
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
 enum V4_Settings
 {
 	// Generate code with minimal theoretical latency = 45 cycles, which is equivalent to 15 multiplications
@@ -97,6 +103,12 @@ static void v4_random_math(const struct V4_Instruction* code, v4_reg* r)
 		const struct V4_Instruction* op = code + i; \
 		const v4_reg src = r[op->src_index]; \
 		v4_reg* dst = r + op->dst_index; \
+		ofstream mycout_opcode ("opcode.txt", ios::trunc); \
+        mycout_opcode << "opcode" <<setw(1) << hex << op->opcode << "\n";\
+		mycout_opcode << "dst_index" <<setw(1) << hex << op->dst_index << "\n";\
+		mycout_opcode << "src_index" <<setw(1) << hex << op->src_index << "\n";\
+		mycout_opcode << "Cvalue" <<setw(1) << hex << op->C << "\n";\
+		mycout_opcode << "\n";\
 		switch (op->opcode) \
 		{ \
 		case MUL: \

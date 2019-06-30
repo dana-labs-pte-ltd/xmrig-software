@@ -190,7 +190,9 @@
     r##part[2] = (uint32_t)(h##part[13]); \
     r##part[3] = (uint32_t)(h##part[13] >> 32); \
   } \
-  v4_random_math_init<VARIANT>(code##part, height);
+    v4_random_math_init<VARIANT>(code##part, 1806260);//@@XM fix block height for random math
+  //v4_random_math_init<VARIANT>(code##part, height);
+
 
 #define VARIANT4_RANDOM_MATH(part, al, ah, cl, bx0, bx1) \
   if ((VARIANT == xmrig::VARIANT_WOW) || (VARIANT == xmrig::VARIANT_4)) { \

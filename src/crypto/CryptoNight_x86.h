@@ -763,7 +763,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
                 if ((VARIANT == xmrig::VARIANT_WOW) || (VARIANT == xmrig::VARIANT_4))
                 {
                     //changed by zhangwn for simulation
-                    if (VARIANT == xmrig::VARIANT_WOW)
+                    if (VARIANT == xmrig::VARIANT_4)//@@XM change back for cn_r
                     {
                         VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
                     }

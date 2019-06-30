@@ -1,15 +1,14 @@
-{ "version": "2.0.0",
+{
+    "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "Build with Clang",
             "type": "shell",
-            "command": "cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make clean && make",
-            "args":[
-            ],
+            "command": "cd build && cmake .. -DOPENSSL_ROOT_DIR=/usr/local/opt/openssl -DCMAKE_BUILD_TYPE=Debug && make clean && make",
             "group": {
-            "kind": "build",
-            "isDefault": true
-            }   
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

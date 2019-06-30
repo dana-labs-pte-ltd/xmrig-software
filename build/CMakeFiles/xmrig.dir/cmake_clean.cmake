@@ -42,7 +42,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/xmrig.dir/src/xmrig.cpp.o"
   "CMakeFiles/xmrig.dir/src/App_unix.cpp.o"
   "CMakeFiles/xmrig.dir/src/base/io/Json_unix.cpp.o"
-  "CMakeFiles/xmrig.dir/src/common/Platform_unix.cpp.o"
+  "CMakeFiles/xmrig.dir/src/common/Platform_mac.cpp.o"
   "CMakeFiles/xmrig.dir/src/Mem_unix.cpp.o"
   "CMakeFiles/xmrig.dir/src/core/cpu/AdvancedCpuInfo.cpp.o"
   "CMakeFiles/xmrig.dir/src/core/cpu/Cpu.cpp.o"

@@ -1,0 +1,332 @@
+[
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/api/NetworkState.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/api/NetworkState.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/api/NetworkState.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/App.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/App.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/App.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/io/Json.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/io/Json.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/io/Json.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/io/Watcher.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/io/Watcher.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/io/Watcher.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/kernel/Entry.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/kernel/Entry.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/kernel/Entry.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/kernel/Process.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/kernel/Process.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/kernel/Process.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/kernel/Signals.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/kernel/Signals.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/kernel/Signals.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/net/Pool.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/net/Pool.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/net/Pool.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/net/Pools.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/net/Pools.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/net/Pools.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/tools/Arguments.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/tools/Arguments.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/tools/Arguments.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/tools/Handle.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/tools/Handle.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/tools/Handle.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/tools/String.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/tools/String.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/tools/String.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/config/CommonConfig.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/config/CommonConfig.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/config/CommonConfig.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/config/ConfigLoader.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/config/ConfigLoader.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/config/ConfigLoader.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/config/ConfigWatcher.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/config/ConfigWatcher.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/config/ConfigWatcher.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/Console.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/Console.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/Console.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/crypto/Algorithm.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/crypto/Algorithm.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/crypto/Algorithm.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/crypto/keccak.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/crypto/keccak.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/crypto/keccak.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/log/BasicLog.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/log/BasicLog.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/log/BasicLog.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/log/ConsoleLog.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/log/ConsoleLog.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/log/ConsoleLog.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/log/FileLog.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/log/FileLog.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/log/FileLog.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/log/Log.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/log/Log.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/log/Log.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/net/Client.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/net/Client.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/net/Client.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/net/Job.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/net/Job.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/net/Job.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/net/strategies/FailoverStrategy.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/net/strategies/FailoverStrategy.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/net/strategies/FailoverStrategy.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/net/strategies/SinglePoolStrategy.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/net/strategies/SinglePoolStrategy.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/net/strategies/SinglePoolStrategy.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/net/SubmitResult.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/net/SubmitResult.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/net/SubmitResult.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/Platform.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/Platform.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/Platform.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/core/Config.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/core/Config.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/core/Config.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/core/Controller.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/core/Controller.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/core/Controller.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/Mem.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/Mem.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/Mem.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/net/Network.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/net/Network.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/net/Network.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/net/strategies/DonateStrategy.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/net/strategies/DonateStrategy.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/net/strategies/DonateStrategy.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/Summary.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/Summary.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/Summary.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/workers/CpuThread.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/workers/CpuThread.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/workers/CpuThread.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/workers/Handle.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/workers/Handle.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/workers/Handle.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/workers/Hashrate.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/workers/Hashrate.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/workers/Hashrate.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/workers/MultiWorker.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/workers/MultiWorker.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/workers/MultiWorker.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/workers/Worker.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/workers/Worker.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/workers/Worker.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/workers/Workers.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/workers/Workers.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/workers/Workers.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/xmrig.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/xmrig.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/xmrig.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/App_unix.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/App_unix.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/App_unix.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/base/io/Json_unix.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/base/io/Json_unix.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/base/io/Json_unix.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/Platform_mac.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/Platform_mac.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/Platform_mac.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/Mem_unix.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/Mem_unix.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/Mem_unix.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/core/cpu/AdvancedCpuInfo.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/core/cpu/AdvancedCpuInfo.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/core/cpu/AdvancedCpuInfo.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/core/cpu/Cpu.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/core/cpu/Cpu.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/core/cpu/Cpu.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -maes -g   -o CMakeFiles/xmrig.dir/src/crypto/c_groestl.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_groestl.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_groestl.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -maes -g   -o CMakeFiles/xmrig.dir/src/crypto/c_blake256.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_blake256.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_blake256.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -maes -g   -o CMakeFiles/xmrig.dir/src/crypto/c_jh.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_jh.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_jh.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -maes -g   -o CMakeFiles/xmrig.dir/src/crypto/c_skein.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_skein.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/c_skein.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/log/SysLog.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/log/SysLog.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/log/SysLog.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/api/Api.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/api/Api.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/api/Api.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/api/ApiRouter.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/api/ApiRouter.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/api/ApiRouter.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/api/Httpd.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/api/Httpd.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/api/Httpd.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/api/HttpRequest.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/api/HttpRequest.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/api/HttpRequest.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/common/net/Tls.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/common/net/Tls.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/common/net/Tls.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/crypto/Asm.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/Asm.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/Asm.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -o CMakeFiles/xmrig.dir/src/crypto/CryptonightR_gen.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/CryptonightR_gen.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/CryptonightR_gen.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -O3 -mavx2 -o CMakeFiles/xmrig.dir/src/crypto/cn_gpu_avx.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/cn_gpu_avx.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/cn_gpu_avx.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build",
+  "command": "/usr/bin/clang++  -DHAVE_SYSLOG_H -DRAPIDJSON_SSE2 -DUNICODE -DXMRIG_NO_IPBC -D__STDC_FORMAT_MACROS -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid -I/usr/local/opt/openssl/include -I/usr/local/include -I/Users/southseven/work/codebase/explore/xmrig-software/src -I/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty   -Wall -fno-exceptions -fno-rtti -Wno-missing-braces -maes -g   -std=c++11 -O3 -o CMakeFiles/xmrig.dir/src/crypto/cn_gpu_ssse3.cpp.o -c /Users/southseven/work/codebase/explore/xmrig-software/src/crypto/cn_gpu_ssse3.cpp",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/crypto/cn_gpu_ssse3.cpp"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build/src/3rdparty/libcpuid",
+  "command": "/usr/bin/clang -DRAPIDJSON_SSE2 -DUNICODE -DVERSION=\\\"0.4.0\\\" -D__STDC_FORMAT_MACROS   -Wall -maes -g   -o CMakeFiles/cpuid.dir/cpuid_main.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/cpuid_main.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/cpuid_main.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build/src/3rdparty/libcpuid",
+  "command": "/usr/bin/clang -DRAPIDJSON_SSE2 -DUNICODE -DVERSION=\\\"0.4.0\\\" -D__STDC_FORMAT_MACROS   -Wall -maes -g   -o CMakeFiles/cpuid.dir/asm-bits.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/asm-bits.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/asm-bits.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build/src/3rdparty/libcpuid",
+  "command": "/usr/bin/clang -DRAPIDJSON_SSE2 -DUNICODE -DVERSION=\\\"0.4.0\\\" -D__STDC_FORMAT_MACROS   -Wall -maes -g   -o CMakeFiles/cpuid.dir/recog_amd.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/recog_amd.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/recog_amd.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build/src/3rdparty/libcpuid",
+  "command": "/usr/bin/clang -DRAPIDJSON_SSE2 -DUNICODE -DVERSION=\\\"0.4.0\\\" -D__STDC_FORMAT_MACROS   -Wall -maes -g   -o CMakeFiles/cpuid.dir/recog_intel.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/recog_intel.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/recog_intel.c"
+},
+{
+  "directory": "/Users/southseven/work/codebase/explore/xmrig-software/build/src/3rdparty/libcpuid",
+  "command": "/usr/bin/clang -DRAPIDJSON_SSE2 -DUNICODE -DVERSION=\\\"0.4.0\\\" -D__STDC_FORMAT_MACROS   -Wall -maes -g   -o CMakeFiles/cpuid.dir/libcpuid_util.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/libcpuid_util.c",
+  "file": "/Users/southseven/work/codebase/explore/xmrig-software/src/3rdparty/libcpuid/libcpuid_util.c"
+}
+]
