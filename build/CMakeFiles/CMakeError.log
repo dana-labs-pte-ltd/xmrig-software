@@ -1,0 +1,29 @@
+Determining if the _rotr exist failed with the following output:
+Change Dir: /Users/southseven/work/codebase/explore/xmrig-software/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ac2e8/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ac2e8.dir/build.make CMakeFiles/cmTC_ac2e8.dir/build
+Building C object CMakeFiles/cmTC_ac2e8.dir/CheckSymbolExists.c.o
+/usr/bin/clang   -Wall -maes    -o CMakeFiles/cmTC_ac2e8.dir/CheckSymbolExists.c.o   -c /Users/southseven/work/codebase/explore/xmrig-software/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/Users/southseven/work/codebase/explore/xmrig-software/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: use of undeclared identifier '_rotr'
+  return ((int*)(&_rotr))[argc];
+                  ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_ac2e8.dir/CheckSymbolExists.c.o] Error 1
+make: *** [cmTC_ac2e8/fast] Error 2
+
+File /Users/southseven/work/codebase/explore/xmrig-software/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <x86intrin.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _rotr
+  return ((int*)(&_rotr))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

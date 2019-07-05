@@ -757,6 +757,12 @@ inttypes.h
 -
 
 ../src/crypto/variant4_random_math.h
+iostream
+-
+fstream
+-
+iomanip
+-
 c_blake256.h
 ../src/crypto/c_blake256.h
 

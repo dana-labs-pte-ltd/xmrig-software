@@ -629,6 +629,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
 
     uint64_t *h0 = reinterpret_cast<uint64_t *>(ctx[0]->state);
 
+#ifdef PRINTFILE_FOR_SIM
     //added by zhangwn for simulation
     if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
     {
@@ -644,7 +645,11 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
         h0[9] = 0xaf267bb9648b6f8b;
         h0[10] = 0x4f60c4f20af60d7c;
         h0[11] = 0x090a233ba8929add;
+        h0[12] = 0x4f60c4f20af60d7c;
+        h0[13] = 0x27f3842d7c78f07d;
+        height = 0x123456789abcdef0;
     }
+#endif
 
 #ifndef XMRIG_NO_ASM
     if (SOFT_AES && xmrig::cn_is_cryptonight_r<VARIANT>())
@@ -677,7 +682,8 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
         VARIANT2_SET_ROUNDING_MODE();
         VARIANT4_RANDOM_MATH_INIT(0);
 
-        //added by zhangwn for simulation 2019 0627
+//added by zhangwn for simulation 2019 0627
+#ifdef PRINTFILE_FOR_SIM
         uint64_t j = 0;
         if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
         {
@@ -687,7 +693,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
                 j = j + 2;
             }
         }
-
+#endif
         uint64_t al0 = h0[0] ^ h0[4];
         uint64_t ah0 = h0[1] ^ h0[5];
         __m128i bx0 = _mm_set_epi64x(h0[3] ^ h0[7], h0[2] ^ h0[6]);
@@ -724,9 +730,9 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
                 uint64_t bl1 = ((__v2di)bx1)[0];
                 uint64_t bh1 = ((__v2di)bx1)[1];
 
-                mycout_ax0 << setw(16) << setfill('0') << hex << ah0 << setw(16) << setfill('0') << hex<< al0 << "\n";
-                mycout_bx0 << setw(16) << setfill('0') << hex << bh0 << setw(16) << setfill('0') << hex<< bl0 << "\n";
-                mycout_bx1 << setw(16) << setfill('0') << hex << bh1 << setw(16) << setfill('0') << hex<< bl1 << "\n";
+                mycout_ax0 << setw(16) << setfill('0') << hex << ah0 << setw(16) << setfill('0') << hex << al0 << "\n";
+                mycout_bx0 << setw(16) << setfill('0') << hex << bh0 << setw(16) << setfill('0') << hex << bl0 << "\n";
+                mycout_bx1 << setw(16) << setfill('0') << hex << bh1 << setw(16) << setfill('0') << hex << bl1 << "\n";
             }
 #endif
 
@@ -769,16 +775,24 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
                     }
                     else
                     {
+                        //VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+                        cl ^= (r0[0] + r0[1]) | ((uint64_t)(r0[2] + r0[3]) << 32);
+                        r0[4] = static_cast<uint32_t>(al0);
+                        r0[5] = static_cast<uint32_t>(ah0);
+                        r0[6] = static_cast<uint32_t>(_mm_cvtsi128_si32(bx0));
+                        r0[7] = static_cast<uint32_t>(_mm_cvtsi128_si32(bx1));
+                        r0[8] = static_cast<uint32_t>(_mm_cvtsi128_si32(_mm_srli_si128(bx1, 8)));
+                        v4_random_math(code0, r0);
                         /* code */
-                        al0 = al0 + 1;
-                        ah0 = ah0 + 1;
-                        cl = cl + 1;
+                        //al0 = al0 + 1;
+                        //ah0 = ah0 + 1;
+                        //cl = cl + 1;
                     }
                     //                VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
                     if (VARIANT == xmrig::VARIANT_4)
                     {
-                        //                    al0 ^= r0[2] | ((uint64_t)(r0[3]) << 32);
-                        //                    ah0 ^= r0[0] | ((uint64_t)(r0[1]) << 32);
+                        al0 ^= r0[2] | ((uint64_t)(r0[3]) << 32);
+                        ah0 ^= r0[0] | ((uint64_t)(r0[1]) << 32);
                     }
                 }
                 else
