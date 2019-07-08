@@ -86,6 +86,13 @@ static inline uint64_t __umul128(uint64_t a, uint64_t b, uint64_t *hi)
     *hi = r >> 64;
     return (uint64_t)r;
 }
+
+static inline uint64_t __umul128_tmp(uint64_t a, uint64_t b, uint64_t *hi)
+{
+    unsigned __int128 r = a * b;
+    *hi = r >> 64;
+    return (uint64_t)r;
+}
 #else
 #define __umul128 _umul128
 #endif
@@ -715,7 +722,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
                 cx = _mm_load_si128((__m128i *)&l0[idx0 & MASK]);
             }
 
-            if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4) && (i == 110))
+            if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4) && (i == 11))
             {
                 printf("error");
             }
@@ -800,8 +807,12 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
                     VARIANT2_INTEGER_MATH(0, cl, cx);
                 }
             }
-
+            uint64_t hi_tmp, lo_tmp;
             lo = __umul128(idx0, cl, &hi);
+            lo_tmp = __umul128_tmp(idx0, cl, &hi_tmp);
+            if((lo != lo_tmp ) || (hi != hi_tmp)){
+                printf("error\n");
+            }
 
             if (BASE == xmrig::VARIANT_2)
             {
