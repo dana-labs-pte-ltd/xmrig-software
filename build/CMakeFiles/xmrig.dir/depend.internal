@@ -947,6 +947,7 @@ CMakeFiles/xmrig.dir/src/workers/CpuThread.cpp.o
  ../src/crypto/soft_aes.h
  ../src/crypto/variant4_random_math.h
  ../src/interfaces/IThread.h
+ ../src/pcie_inf/dma_utils.c
  ../src/workers/CpuThread.h
  /media/wanner/work/work/software/xmrig-software/src/workers/CpuThread.cpp
 CMakeFiles/xmrig.dir/src/workers/Handle.cpp.o

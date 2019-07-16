@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iomanip>
 
-#define PRINTFILE_FOR_SIM 1
+//#define PRINTFILE_FOR_SIM 1
 
 using namespace std;
 

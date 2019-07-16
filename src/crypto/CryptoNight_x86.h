@@ -33,6 +33,8 @@
 #define __restrict__ __restrict
 #endif
 
+#define XMRIG_FPGA_VCU1525 1
+
 #include "common/cpu/Cpu.h"
 #include "common/crypto/keccak.h"
 #include "crypto/CryptoNight.h"
@@ -44,9 +46,298 @@
 #include <fstream>
 #include <iomanip>
 
-#define PRINTFILE_FOR_SIM 1
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <byteswap.h>
+#include <string.h>
+#include <errno.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <ctype.h>
+#include <termios.h>
+
+#include <sys/types.h>
+#include <sys/mman.h>
+
+#include <time.h>
+
+#include "pcie_inf/dma_utils.c"
+
+//#define MEM_HARDLOOP_FPGA 1
+#define DEVICE_NAME_DMA_H2C_0 "/dev/xdma0_h2c_0"
+#define DEVICE_NAME_DMA_C2H_0 "/dev/xdma0_c2h_0"
+#define DEVICE_NAME_FOR_USER "/dev/xdma0_user"
+#define SIZE_DEFAULT (32)
+#define COUNT_DEFAULT (1)
+
+/* ltoh: little to host */
+/* htol: little to host */
+#if __BYTE_ORDER == __LITTLE_ENDIAN
+#define ltohl(x) (x)
+#define ltohs(x) (x)
+#define htoll(x) (x)
+#define htols(x) (x)
+#elif __BYTE_ORDER == __BIG_ENDIAN
+#define ltohl(x) __bswap_32(x)
+#define ltohs(x) __bswap_16(x)
+#define htoll(x) __bswap_32(x)
+#define htols(x) __bswap_16(x)
+#endif
+
+#define MAP_SIZE (32 * 1024UL)
+#define MAP_MASK (MAP_SIZE - 1)
+
+#define FPGA_DEBUG 1
+
+#define FATAL                                                                                                 \
+    do                                                                                                        \
+    {                                                                                                         \
+        fprintf(stderr, "Error at line %d, file %s (%d) [%s]\n", __LINE__, __FILE__, errno, strerror(errno)); \
+        exit(1);                                                                                              \
+    } while (0)
 
 using namespace std;
+
+void fpga_reg_wr(const char *devname, uint32_t offset, uint32_t in_data)
+{
+    int fd;
+    void *map_base, *virt_addr;
+    uint32_t target;
+    uint32_t writeval;
+    //device = devname;
+    //printf("device: %s\n", device);
+    target = offset;
+    //printf("address: 0x%08x\n", (unsigned int)target);
+
+    //printf("access type: %s\n", argc >= 4 ? "write" : "read");
+    if ((fd = open(devname, O_RDWR | O_SYNC)) == -1)
+        FATAL;
+    //printf("character device %s opened.\n", argv[1]);
+    fflush(stdout);
+
+    /* map one page */
+    map_base = mmap(0, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    if (map_base == (void *)-1)
+        FATAL;
+    //printf("Memory mapped at address %p.\n", map_base);
+    fflush(stdout);
+
+    /* calculate the virtual address to be accessed */
+    virt_addr = (uint32_t *)map_base + target;
+    writeval = htoll(in_data);
+    *((uint32_t *)virt_addr) = writeval;
+    fflush(stdout);
+    if (munmap(map_base, MAP_SIZE) == -1)
+        FATAL;
+    close(fd);
+}
+
+uint32_t fpga_reg_rd(const char *devname, uint32_t offset)
+{
+    int fd;
+    void *map_base, *virt_addr;
+    uint32_t read_result;
+    uint32_t target;
+    /* access width */
+    //int access_width = 'w';
+    //char device;
+
+    //device = devname;
+    //printf("device: %s\n", device);
+    target = offset;
+    //printf("address: 0x%08x\n", (unsigned int)target);
+
+    //printf("access type: %s\n", argc >= 4 ? "write" : "read");
+    if ((fd = open(devname, O_RDWR | O_SYNC)) == -1)
+        FATAL;
+    //printf("character device %s opened.\n", argv[1]);
+    fflush(stdout);
+
+    /* map one page */
+    map_base = mmap(0, MAP_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    if (map_base == (void *)-1)
+        FATAL;
+    //printf("Memory mapped at address %p.\n", map_base);
+    fflush(stdout);
+
+    /* calculate the virtual address to be accessed */
+    virt_addr = (uint32_t *)map_base + target;
+    read_result = *((uint32_t *)virt_addr);
+    /* swap 32-bit endianess if host is not little-endian */
+    read_result = ltohl(read_result);
+    fflush(stdout);
+    if (munmap(map_base, MAP_SIZE) == -1)
+        FATAL;
+    close(fd);
+    return read_result;
+}
+
+static int dma_to_fpga(const char *devname, uint64_t addr, uint64_t size, uint8_t *in_buf)
+{
+    //uint64_t i;
+    ssize_t rc;
+    char *buffer = NULL;
+    char *allocated = NULL;
+    int fpga_fd = open(devname, O_RDWR);
+
+    if (fpga_fd < 0)
+    {
+        fprintf(stderr, "unable to open device %s, %d.\n",
+                devname, fpga_fd);
+        perror("open device");
+        return -EINVAL;
+    }
+
+    posix_memalign((void **)&allocated, 4096 /*alignment */, size + 4096);
+    if (!allocated)
+    {
+        fprintf(stderr, "OOM %lu.\n", size + 4096);
+        rc = -ENOMEM;
+        goto out;
+    }
+
+    buffer = allocated; //changed by zhangwn
+    memcpy(buffer, in_buf, size);
+    //if (verbose)
+    //      fprintf(stdout, "host buffer 0x%lx = %p\n",
+    //           size + 4096, buffer);
+
+    rc = write_from_buffer((char *)devname, fpga_fd, buffer, size, addr);
+    if (rc < 0)
+        goto out;
+    rc = 0;
+
+out:
+    close(fpga_fd);
+    free(allocated);
+    return rc;
+}
+
+static int dma_from_fpga(const char *devname, uint64_t addr, uint64_t size, uint8_t *out_buf)
+{
+    //uint64_t i;
+    ssize_t rc;
+    char *buffer = NULL;
+    char *allocated = NULL;
+    //mux.lock();
+    int fpga_fd = open(devname, O_RDWR | O_NONBLOCK);
+
+    if (fpga_fd < 0)
+    {
+        fprintf(stderr, "unable to open device %s, %d.\n",
+                devname, fpga_fd);
+        perror("open device");
+        return -EINVAL;
+    }
+
+    posix_memalign((void **)&allocated, 4096 /*alignment */, size + 4096);
+    if (!allocated)
+    {
+        fprintf(stderr, "OOM %lu.\n", size + 4096);
+        rc = -ENOMEM;
+        goto out;
+    }
+
+    buffer = allocated; //changed by zhangwn
+
+    //if (verbose)
+    //      fprintf(stdout, "host buffer 0x%lx = %p\n",
+    //           size + 4096, buffer);
+
+    rc = read_to_buffer((char *)devname, fpga_fd, buffer, size, addr);
+    if (rc < 0)
+        goto out;
+    rc = 0;
+    memcpy(out_buf, buffer, size);
+
+out:
+    close(fpga_fd);
+    free(allocated);
+    return rc;
+}
+/*
+struct V4_Instruction
+{
+	uint8_t opcode;
+	uint8_t dst_index;
+	uint8_t src_index;
+	uint32_t C;
+};
+*/
+uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0)
+{
+    //initial write the h0 reg
+    const struct V4_Instruction *op;
+    u_int32_t temp = 0;
+    u_int32_t i = 0;
+
+    //reset the crypto core
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
+    //release the reset
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x1);
+    /* 
+    temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
+    int i = 0;
+    while ((temp & 0x2) != 0)
+    {
+        printf("core busy!\n");
+        temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
+        i++;
+        if (i == 0x2fffffff)
+        {
+            printf("read status timeout!\n");
+            return -1;
+        }
+    }
+    */
+    //fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x201, 0x0);
+    for (int i = 0; i < 14; i++)
+    {
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x100 + i * 2, (uint32_t)h0[i]);
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x100 + i * 2 + 1, (uint32_t)(h0[i] >> 32));
+    }
+    //initial write the code0 reg
+    for (u_int32_t i = 0; i <= 70; i++)
+    {
+        op = code0 + i;
+        temp = op->C;
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x000 + i * 2, temp);
+        temp = (op->opcode << 16) + (op->dst_index << 8) + op->src_index;
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x000 + i * 2 + 1, temp);
+    }
+    //write the ret opcode
+    temp = (0x6 << 16);
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x000 + 70 * 2 + 1, temp);
+    //initial write the 2M memory DMA
+    dma_to_fpga(DEVICE_NAME_DMA_H2C_0, 0x0, 2097152, l0);
+
+    //start the crypto core
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x200, 0x1);
+
+    //check the status for crypto done
+    temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
+    //printf("temp = %x\n", temp);
+    while ((temp & 0x1) == 0)
+    {
+        //printf("core busy!\n");
+        temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
+        i++;
+        if (i == 0x2fffffff)
+        {
+            printf("read status timeout!\n");
+            return -1;
+        }
+    }
+    //dma read
+    dma_from_fpga(DEVICE_NAME_DMA_C2H_0, 0x0, 2097152, l0);
+    //clear the status flag
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x201, 0x0);
+    //    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
+    return 0;
+}
 
 extern "C"
 {
@@ -83,13 +374,6 @@ void (*const extra_hashes[4])(const uint8_t *, size_t, uint8_t *) = {do_blake_ha
 static inline uint64_t __umul128(uint64_t a, uint64_t b, uint64_t *hi)
 {
     unsigned __int128 r = (unsigned __int128)a * (unsigned __int128)b;
-    *hi = r >> 64;
-    return (uint64_t)r;
-}
-
-static inline uint64_t __umul128_tmp(uint64_t a, uint64_t b, uint64_t *hi)
-{
-    unsigned __int128 r = a * b;
     *hi = r >> 64;
     return (uint64_t)r;
 }
@@ -565,34 +849,8 @@ static inline void cryptonight_monero_tweak(uint64_t *mem_out, const uint8_t *l,
 {
     if (BASE == xmrig::VARIANT_2)
     {
-        //VARIANT2_SHUFFLE(l, idx, ax0, bx0, bx1, cx, (VARIANT == xmrig::VARIANT_RWZ ? 1 : 0));
-        //for simulation changed
-        const uint8_t *base_ptr = l;
-        uint64_t offset = idx;
-        const __m128i _a = ax0;
-        __m128i _b = bx0;
-        __m128i _b1 = bx1;
-        __m128i _c = cx;
-        bool reverse = 0;
-        do
-        {
-            const __m128i chunk1 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ (reverse ? 0x30 : 0x10))));
-            const __m128i chunk2 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)));
-            const __m128i chunk3 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ (reverse ? 0x10 : 0x30))));
-            const __m128i chunk3xorb1 = _mm_add_epi64(chunk3, _b1);
-            const __m128i chunk1xorb0 = _mm_add_epi64(chunk1, _b);
-            const __m128i chunk2xora0 = _mm_add_epi64(chunk2, _a);
-            _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x10)), chunk3xorb1);
-            _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)), chunk1xorb0);
-            _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x30)), chunk2xora0);
-            if (VARIANT == xmrig::VARIANT_4)
-            {
-                _c = _mm_xor_si128(_mm_xor_si128(_c, chunk3), _mm_xor_si128(chunk1, chunk2));
-            }
-        } while (0);
-        cx = _c;
-        const __m128i cx_xor_bx0 = _mm_xor_si128(bx0, cx);
-        _mm_store_si128((__m128i *)mem_out, cx_xor_bx0);
+        VARIANT2_SHUFFLE(l, idx, ax0, bx0, bx1, cx, (VARIANT == xmrig::VARIANT_RWZ ? 1 : 0));
+        _mm_store_si128((__m128i *)mem_out, _mm_xor_si128(bx0, cx));
     }
     else
     {
@@ -636,8 +894,9 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
 
     uint64_t *h0 = reinterpret_cast<uint64_t *>(ctx[0]->state);
 
-#ifdef PRINTFILE_FOR_SIM
+#ifdef FPGA_DEBUG
     //added by zhangwn for simulation
+    //uint32_t temp_test;
     if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
     {
         h0[0] = 0x8862253561833732;
@@ -690,7 +949,7 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
         VARIANT4_RANDOM_MATH_INIT(0);
 
 //added by zhangwn for simulation 2019 0627
-#ifdef PRINTFILE_FOR_SIM
+#ifdef FPGA_DEBUG
         uint64_t j = 0;
         if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
         {
@@ -701,214 +960,235 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
             }
         }
 #endif
-        uint64_t al0 = h0[0] ^ h0[4];
-        uint64_t ah0 = h0[1] ^ h0[5];
-        __m128i bx0 = _mm_set_epi64x(h0[3] ^ h0[7], h0[2] ^ h0[6]);
-        __m128i bx1 = _mm_set_epi64x(h0[9] ^ h0[11], h0[8] ^ h0[10]);
 
-        uint64_t idx0 = al0;
-//add print file for simulation
-#ifdef PRINTFILE_FOR_SIM
-        ofstream mycout_ax0("ax0.txt", ios::trunc);
-        ofstream mycout_bx0("bx0.txt", ios::trunc);
-        ofstream mycout_bx1("bx1.txt", ios::trunc);
-#endif
-
-        for (size_t i = 0; i < ITERATIONS; i++)
+#ifdef XMRIG_FPGA_VCU1525
+        if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
         {
-            __m128i cx;
-            if (VARIANT == xmrig::VARIANT_TUBE || !SOFT_AES)
-            {
-                cx = _mm_load_si128((__m128i *)&l0[idx0 & MASK]);
-            }
-
-            if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4) && (i == 11))
-            {
-                printf("error");
-            }
-
-            const __m128i ax0 = _mm_set_epi64x(ah0, al0);
-//print the ax0 bx0 bx1 for simulation by zhangwn 20190628
-#ifdef PRINTFILE_FOR_SIM
-            if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
-            {
-                uint64_t bl0 = ((__v2di)bx0)[0];
-                uint64_t bh0 = ((__v2di)bx0)[1];
-                uint64_t bl1 = ((__v2di)bx1)[0];
-                uint64_t bh1 = ((__v2di)bx1)[1];
-
-                mycout_ax0 << setw(16) << setfill('0') << hex << ah0 << setw(16) << setfill('0') << hex << al0 << "\n";
-                mycout_bx0 << setw(16) << setfill('0') << hex << bh0 << setw(16) << setfill('0') << hex << bl0 << "\n";
-                mycout_bx1 << setw(16) << setfill('0') << hex << bh1 << setw(16) << setfill('0') << hex << bl1 << "\n";
-            }
+            fpga_memory_hard_loop(const_cast<uint8_t *>(l0), h0, code0);
+        }
+        else
+        {
 #endif
+            uint64_t al0 = h0[0] ^ h0[4];
+            uint64_t ah0 = h0[1] ^ h0[5];
+            __m128i bx0 = _mm_set_epi64x(h0[3] ^ h0[7], h0[2] ^ h0[6]);
+            __m128i bx1 = _mm_set_epi64x(h0[9] ^ h0[11], h0[8] ^ h0[10]);
 
-            if (VARIANT == xmrig::VARIANT_TUBE)
+            uint64_t idx0 = al0;
+//add print file for simulation
+#ifdef FPGA_DEBUG
+            ofstream mycout_ax0("ax0.txt", ios::trunc);
+            ofstream mycout_bx0("bx0.txt", ios::trunc);
+            ofstream mycout_bx1("bx1.txt", ios::trunc);
+#endif
+            for (size_t i = 0; i < ITERATIONS; i++)
             {
-                cx = aes_round_tweak_div(cx, ax0);
-            }
-            else if (SOFT_AES)
-            {
-                cx = soft_aesenc((uint32_t *)&l0[idx0 & MASK], ax0, (const uint32_t *)saes_table);
-            }
-            else
-            {
-                cx = _mm_aesenc_si128(cx, ax0);
-            }
-
-            if (BASE == xmrig::VARIANT_1 || BASE == xmrig::VARIANT_2)
-            {
-                cryptonight_monero_tweak<VARIANT, BASE>((uint64_t *)&l0[idx0 & MASK], l0, idx0 & MASK, ax0, bx0, bx1, cx);
-            }
-            else
-            {
-                _mm_store_si128((__m128i *)&l0[idx0 & MASK], _mm_xor_si128(bx0, cx));
-            }
-
-            idx0 = _mm_cvtsi128_si64(cx);
-
-            uint64_t hi, lo, cl, ch;
-            cl = ((uint64_t *)&l0[idx0 & MASK])[0];
-            ch = ((uint64_t *)&l0[idx0 & MASK])[1];
-
-            if (BASE == xmrig::VARIANT_2)
-            {
-                if ((VARIANT == xmrig::VARIANT_WOW) || (VARIANT == xmrig::VARIANT_4))
+                __m128i cx;
+                if (VARIANT == xmrig::VARIANT_TUBE || !SOFT_AES)
                 {
-                    //changed by zhangwn for simulation
-                    if (VARIANT == xmrig::VARIANT_WOW)
+                    cx = _mm_load_si128((__m128i *)&l0[idx0 & MASK]);
+                }
+
+                const __m128i ax0 = _mm_set_epi64x(ah0, al0);
+
+                //print the ax0 bx0 bx1 for simulation by zhangwn 20190628
+#ifdef FPGA_DEBUG
+                if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
+                {
+                    uint64_t bl0 = ((__v2di)bx0)[0];
+                    uint64_t bh0 = ((__v2di)bx0)[1];
+                    uint64_t bl1 = ((__v2di)bx1)[0];
+                    uint64_t bh1 = ((__v2di)bx1)[1];
+
+                    mycout_ax0 << setw(16) << setfill('0') << hex << ah0 << setw(16) << setfill('0') << hex << al0 << "\n";
+                    mycout_bx0 << setw(16) << setfill('0') << hex << bh0 << setw(16) << setfill('0') << hex << bl0 << "\n";
+                    mycout_bx1 << setw(16) << setfill('0') << hex << bh1 << setw(16) << setfill('0') << hex << bl1 << "\n";
+                }
+#endif
+                if (VARIANT == xmrig::VARIANT_TUBE)
+                {
+                    cx = aes_round_tweak_div(cx, ax0);
+                }
+                else if (SOFT_AES)
+                {
+                    cx = soft_aesenc((uint32_t *)&l0[idx0 & MASK], ax0, (const uint32_t *)saes_table);
+                }
+                else
+                {
+                    cx = _mm_aesenc_si128(cx, ax0);
+                }
+
+                if (BASE == xmrig::VARIANT_1 || BASE == xmrig::VARIANT_2)
+                {
+                    cryptonight_monero_tweak<VARIANT, BASE>((uint64_t *)&l0[idx0 & MASK], l0, idx0 & MASK, ax0, bx0, bx1, cx);
+                }
+                else
+                {
+                    _mm_store_si128((__m128i *)&l0[idx0 & MASK], _mm_xor_si128(bx0, cx));
+                }
+
+                idx0 = _mm_cvtsi128_si64(cx);
+
+                uint64_t hi, lo, cl, ch;
+                cl = ((uint64_t *)&l0[idx0 & MASK])[0];
+                ch = ((uint64_t *)&l0[idx0 & MASK])[1];
+
+                if (BASE == xmrig::VARIANT_2)
+                {
+                    if ((VARIANT == xmrig::VARIANT_WOW) || (VARIANT == xmrig::VARIANT_4))
                     {
-                        VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+                        //changed by zhangwn for simulation
+                        if (VARIANT == xmrig::VARIANT_WOW)
+                        {
+                            VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+                        }
+                        else
+                        {
+//VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+#ifdef FPGA_DEBUG
+                            cl ^= (r0[0] + r0[1]) | ((uint64_t)(r0[2] + r0[3]) << 32);
+                            r0[4] = static_cast<uint32_t>(al0);
+                            r0[5] = static_cast<uint32_t>(ah0);
+                            r0[6] = static_cast<uint32_t>(_mm_cvtsi128_si32(bx0));
+                            r0[7] = static_cast<uint32_t>(_mm_cvtsi128_si32(bx1));
+                            r0[8] = static_cast<uint32_t>(_mm_cvtsi128_si32(_mm_srli_si128(bx1, 8)));
+                            v4_random_math(code0, r0);
+#else
+                    VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+#endif
+                        }
+                        //VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+                        if (VARIANT == xmrig::VARIANT_4)
+                        {
+                            al0 ^= r0[2] | ((uint64_t)(r0[3]) << 32);
+                            ah0 ^= r0[0] | ((uint64_t)(r0[1]) << 32);
+                        }
                     }
                     else
                     {
-                        //VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
-                        cl ^= (r0[0] + r0[1]) | ((uint64_t)(r0[2] + r0[3]) << 32);
-                        r0[4] = static_cast<uint32_t>(al0);
-                        r0[5] = static_cast<uint32_t>(ah0);
-                        r0[6] = static_cast<uint32_t>(_mm_cvtsi128_si32(bx0));
-                        r0[7] = static_cast<uint32_t>(_mm_cvtsi128_si32(bx1));
-                        r0[8] = static_cast<uint32_t>(_mm_cvtsi128_si32(_mm_srli_si128(bx1, 8)));
-                        v4_random_math(code0, r0);
-                        /* code */
-                        //al0 = al0 + 1;
-                        //ah0 = ah0 + 1;
-                        //cl = cl + 1;
+                        VARIANT2_INTEGER_MATH(0, cl, cx);
                     }
-                    //                VARIANT4_RANDOM_MATH(0, al0, ah0, cl, bx0, bx1);
+                }
+
+                lo = __umul128(idx0, cl, &hi);
+
+                if (BASE == xmrig::VARIANT_2)
+                {
                     if (VARIANT == xmrig::VARIANT_4)
                     {
-                        al0 ^= r0[2] | ((uint64_t)(r0[3]) << 32);
-                        ah0 ^= r0[0] | ((uint64_t)(r0[1]) << 32);
+#ifdef FPGA_DEBUG
+                        const uint8_t *base_ptr = l0;
+                        uint64_t offset = idx0 & MASK;
+                        const __m128i _a = ax0;
+                        __m128i _b = bx0;
+                        __m128i _b1 = bx1;
+                        __m128i _c = cx;
+                        bool reverse = 0;
+                        do
+                        {
+                            const __m128i chunk1 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ (reverse ? 0x30 : 0x10))));
+                            const __m128i chunk2 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)));
+                            const __m128i chunk3 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ (reverse ? 0x10 : 0x30))));
+                            //_mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x10)), _mm_add_epi64(chunk3, _b1));
+                            //_mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)), _mm_add_epi64(chunk1, _b));
+                            //_mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x30)), _mm_add_epi64(chunk2, _a));
+                            const __m128i chunk3xorb1 = _mm_add_epi64(chunk3, _b1);
+                            const __m128i chunk1xorb0 = _mm_add_epi64(chunk1, _b);
+                            const __m128i chunk2xora0 = _mm_add_epi64(chunk2, _a);
+                            _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x10)), chunk3xorb1);
+                            _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)), chunk1xorb0);
+                            _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x30)), chunk2xora0);
+                            if (VARIANT == xmrig::VARIANT_4)
+                            {
+                                _c = _mm_xor_si128(_mm_xor_si128(_c, chunk3), _mm_xor_si128(chunk1, chunk2));
+                            }
+                        } while (0);
+                        cx = _c;
+#else
+                VARIANT2_SHUFFLE(l0, idx0 & MASK, ax0, bx0, bx1, cx, 0);
+#endif
+                        //VARIANT2_SHUFFLE(l0, idx0 & MASK, ax0, bx0, bx1, cx, 0);
+                    }
+                    else
+                    {
+                        VARIANT2_SHUFFLE2(l0, idx0 & MASK, ax0, bx0, bx1, hi, lo, (VARIANT == xmrig::VARIANT_RWZ ? 1 : 0));
                     }
                 }
+
+                al0 += hi;
+                ah0 += lo;
+
+                ((uint64_t *)&l0[idx0 & MASK])[0] = al0;
+
+                if (BASE == xmrig::VARIANT_1 && (VARIANT == xmrig::VARIANT_TUBE || VARIANT == xmrig::VARIANT_RTO))
+                {
+                    ((uint64_t *)&l0[idx0 & MASK])[1] = ah0 ^ tweak1_2_0 ^ al0;
+                }
+                else if (BASE == xmrig::VARIANT_1)
+                {
+                    ((uint64_t *)&l0[idx0 & MASK])[1] = ah0 ^ tweak1_2_0;
+                }
                 else
                 {
-                    VARIANT2_INTEGER_MATH(0, cl, cx);
+                    ((uint64_t *)&l0[idx0 & MASK])[1] = ah0;
                 }
-            }
-            uint64_t hi_tmp, lo_tmp;
-            lo = __umul128(idx0, cl, &hi);
-            lo_tmp = __umul128_tmp(idx0, cl, &hi_tmp);
-            if((lo != lo_tmp ) || (hi != hi_tmp)){
-                printf("error\n");
-            }
 
-            if (BASE == xmrig::VARIANT_2)
-            {
-                if (VARIANT == xmrig::VARIANT_4)
+                al0 ^= cl;
+                ah0 ^= ch;
+                idx0 = al0;
+
+                if (ALGO == xmrig::CRYPTONIGHT_HEAVY)
                 {
-                    //                VARIANT2_SHUFFLE(l0, idx0 & MASK, ax0, bx0, bx1, cx, 0);
-                    const uint8_t *base_ptr = l0;
-                    uint64_t offset = idx0 & MASK;
-                    const __m128i _a = ax0;
-                    __m128i _b = bx0;
-                    __m128i _b1 = bx1;
-                    __m128i _c = cx;
-                    bool reverse = 0;
-                    do
+                    int64_t n = ((int64_t *)&l0[idx0 & MASK])[0];
+                    int32_t d = ((int32_t *)&l0[idx0 & MASK])[2];
+                    int64_t q = n / (d | 0x5);
+
+                    ((int64_t *)&l0[idx0 & MASK])[0] = n ^ q;
+
+                    if (VARIANT == xmrig::VARIANT_XHV)
                     {
-                        const __m128i chunk1 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ (reverse ? 0x30 : 0x10))));
-                        const __m128i chunk2 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)));
-                        const __m128i chunk3 = _mm_load_si128((__m128i *)((base_ptr) + ((offset) ^ (reverse ? 0x10 : 0x30))));
-                        //_mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x10)), _mm_add_epi64(chunk3, _b1));
-                        //_mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)), _mm_add_epi64(chunk1, _b));
-                        //_mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x30)), _mm_add_epi64(chunk2, _a));
-                        const __m128i chunk3xorb1 = _mm_add_epi64(chunk3, _b1);
-                        const __m128i chunk1xorb0 = _mm_add_epi64(chunk1, _b);
-                        const __m128i chunk2xora0 = _mm_add_epi64(chunk2, _a);
-                        _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x10)), chunk3xorb1);
-                        _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x20)), chunk1xorb0);
-                        _mm_store_si128((__m128i *)((base_ptr) + ((offset) ^ 0x30)), chunk2xora0);
-                        if (VARIANT == xmrig::VARIANT_4)
-                        {
-                            _c = _mm_xor_si128(_mm_xor_si128(_c, chunk3), _mm_xor_si128(chunk1, chunk2));
-                        }
-                    } while (0);
-                    cx = _c;
+                        d = ~d;
+                    }
+
+                    idx0 = d ^ q;
                 }
-                else
+
+                if (BASE == xmrig::VARIANT_2)
                 {
-                    VARIANT2_SHUFFLE2(l0, idx0 & MASK, ax0, bx0, bx1, hi, lo, (VARIANT == xmrig::VARIANT_RWZ ? 1 : 0));
-                }
-            }
-
-            al0 += hi;
-            ah0 += lo;
-
-            ((uint64_t *)&l0[idx0 & MASK])[0] = al0;
-
-            if (BASE == xmrig::VARIANT_1 && (VARIANT == xmrig::VARIANT_TUBE || VARIANT == xmrig::VARIANT_RTO))
-            {
-                ((uint64_t *)&l0[idx0 & MASK])[1] = ah0 ^ tweak1_2_0 ^ al0;
-            }
-            else if (BASE == xmrig::VARIANT_1)
-            {
-                ((uint64_t *)&l0[idx0 & MASK])[1] = ah0 ^ tweak1_2_0;
-            }
-            else
-            {
-                ((uint64_t *)&l0[idx0 & MASK])[1] = ah0;
-            }
-
-            al0 ^= cl;
-            ah0 ^= ch;
-            idx0 = al0;
-
-            if (ALGO == xmrig::CRYPTONIGHT_HEAVY)
-            {
-                int64_t n = ((int64_t *)&l0[idx0 & MASK])[0];
-                int32_t d = ((int32_t *)&l0[idx0 & MASK])[2];
-                int64_t q = n / (d | 0x5);
-
-                ((int64_t *)&l0[idx0 & MASK])[0] = n ^ q;
-
-                if (VARIANT == xmrig::VARIANT_XHV)
-                {
-                    d = ~d;
+                    bx1 = bx0;
                 }
 
-                idx0 = d ^ q;
+                bx0 = cx;
             }
+#ifdef FPGA_DEBUG
+            mycout_ax0.close();
+            mycout_bx0.close();
+            mycout_bx1.close();
 
-            if (BASE == xmrig::VARIANT_2)
-            {
-                bx1 = bx0;
-            }
-
-            bx0 = cx;
-        }
-#ifdef PRINTFILE_FOR_SIM
-        mycout_ax0.close();
-        mycout_bx0.close();
-        mycout_bx1.close();
-        if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
-        {
-            printf("End of iteration!!!\n");
+#endif
+#ifdef XMRIG_FPGA_VCU1525
         }
 #endif
-
 #ifndef XMRIG_NO_ASM
+    }
+#endif
+
+#ifdef FPGA_DEBUG
+    uint64_t *mem2m_m = reinterpret_cast<uint64_t *>(ctx[0]->memory);
+    if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
+    {
+        //printf("End of iteration!!!\n");
+
+#ifdef XMRIG_FPGA_VCU1525
+        ofstream mycout_mem2m("mem2m_fpga.txt", ios::trunc);
+#else
+        ofstream mycout_mem2m("mem2m_soft.txt", ios::trunc);
+#endif
+        for (uint32_t i = 0; i < 262144; i++)
+        {
+            mycout_mem2m << setw(16) << setfill('0') << hex << mem2m_m[i] << "\n";
+        }
+        mycout_mem2m.close();
     }
 #endif
 
