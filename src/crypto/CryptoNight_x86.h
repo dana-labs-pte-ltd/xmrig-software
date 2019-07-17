@@ -64,6 +64,10 @@
 #include <time.h>
 
 #include "pcie_inf/dma_utils.c"
+#include <thread> // std::thread
+#include <mutex>  // std::mutex
+
+std::mutex mtx; // mutex for critical section
 
 //#define MEM_HARDLOOP_FPGA 1
 #define DEVICE_NAME_DMA_H2C_0 "/dev/xdma0_h2c_0"
@@ -89,7 +93,7 @@
 #define MAP_SIZE (32 * 1024UL)
 #define MAP_MASK (MAP_SIZE - 1)
 
-#define FPGA_DEBUG 1
+//#define FPGA_DEBUG 1
 
 #define FATAL                                                                                                 \
     do                                                                                                        \
@@ -276,7 +280,7 @@ uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0)
     //reset the crypto core
     fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
     //release the reset
-    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x1);
+    //fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x1);
     /* 
     temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
     int i = 0;
@@ -964,7 +968,9 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
 #ifdef XMRIG_FPGA_VCU1525
         if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
         {
+            mtx.lock();
             fpga_memory_hard_loop(const_cast<uint8_t *>(l0), h0, code0);
+            mtx.unlock();
         }
         else
         {

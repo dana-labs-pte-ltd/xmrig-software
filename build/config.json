@@ -37,7 +37,7 @@
     "retries": 5,
     "retry-pause": 5,
     "safe": false,
-    "threads": 1,
+    "threads": 5,
     "user-agent": null,
     "watch": true
 }

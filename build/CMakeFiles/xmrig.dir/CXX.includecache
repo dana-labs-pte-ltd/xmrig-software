@@ -725,6 +725,10 @@ time.h
 -
 pcie_inf/dma_utils.c
 ../src/crypto/pcie_inf/dma_utils.c
+thread
+-
+mutex
+-
 crypto/c_groestl.h
 ../src/crypto/crypto/c_groestl.h
 crypto/c_blake256.h
