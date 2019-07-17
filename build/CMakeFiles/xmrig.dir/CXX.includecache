@@ -689,6 +689,8 @@ crypto/CryptoNight_monero.h
 ../src/crypto/crypto/CryptoNight_monero.h
 crypto/soft_aes.h
 ../src/crypto/crypto/soft_aes.h
+fpga/fpga_core.h
+../src/crypto/fpga/fpga_core.h
 iostream
 -
 fstream
@@ -723,11 +725,15 @@ sys/mman.h
 -
 time.h
 -
+unistd.h
+-
 pcie_inf/dma_utils.c
 ../src/crypto/pcie_inf/dma_utils.c
 thread
 -
 mutex
+-
+stack
 -
 crypto/c_groestl.h
 ../src/crypto/crypto/c_groestl.h
@@ -801,6 +807,8 @@ c_blake256.h
 ../src/crypto/c_blake256.h
 
 ../src/donate.h
+
+../src/fpga/fpga_core.h
 
 ../src/interfaces/IJobResultListener.h
 
@@ -2003,4 +2011,6 @@ base/kernel/Entry.h
 /media/wanner/work/work/software/xmrig-software/src/base/kernel/Entry.h
 base/kernel/Process.h
 /media/wanner/work/work/software/xmrig-software/src/base/kernel/Process.h
+stack
+-
 

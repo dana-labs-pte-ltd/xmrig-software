@@ -41,6 +41,7 @@
 #include "crypto/CryptoNight_constants.h"
 #include "crypto/CryptoNight_monero.h"
 #include "crypto/soft_aes.h"
+#include "fpga/fpga_core.h"
 
 #include <iostream>
 #include <fstream>
@@ -62,10 +63,14 @@
 #include <sys/mman.h>
 
 #include <time.h>
+#include <unistd.h>
 
 #include "pcie_inf/dma_utils.c"
 #include <thread> // std::thread
 #include <mutex>  // std::mutex
+#include <stack>
+
+extern std::stack<int> myStack; //定义栈
 
 std::mutex mtx; // mutex for critical section
 
@@ -129,7 +134,7 @@ void fpga_reg_wr(const char *devname, uint32_t offset, uint32_t in_data)
     fflush(stdout);
 
     /* calculate the virtual address to be accessed */
-    virt_addr = (uint32_t *)map_base + target;
+    virt_addr = (uint8_t *)map_base + target;
     writeval = htoll(in_data);
     *((uint32_t *)virt_addr) = writeval;
     fflush(stdout);
@@ -167,7 +172,7 @@ uint32_t fpga_reg_rd(const char *devname, uint32_t offset)
     fflush(stdout);
 
     /* calculate the virtual address to be accessed */
-    virt_addr = (uint32_t *)map_base + target;
+    virt_addr = (uint8_t *)map_base + target;
     read_result = *((uint32_t *)virt_addr);
     /* swap 32-bit endianess if host is not little-endian */
     read_result = ltohl(read_result);
@@ -270,7 +275,7 @@ struct V4_Instruction
 	uint32_t C;
 };
 */
-uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0)
+uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0, u_int32_t core_id)
 {
     //initial write the h0 reg
     const struct V4_Instruction *op;
@@ -278,56 +283,39 @@ uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0)
     u_int32_t i = 0;
 
     //reset the crypto core
-    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
-    //release the reset
-    //fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x1);
-    /* 
-    temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
-    int i = 0;
-    while ((temp & 0x2) != 0)
-    {
-        printf("core busy!\n");
-        temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
-        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
-        i++;
-        if (i == 0x2fffffff)
-        {
-            printf("read status timeout!\n");
-            return -1;
-        }
-    }
-    */
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_RESET_REG_ADDR_OFFSET, 0x0);
+
     //fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x201, 0x0);
-    for (int i = 0; i < 14; i++)
+    for (u_int32_t i = 0; i <= FPGA_H0_SIZE - 1; i++)
     {
-        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x100 + i * 2, (uint32_t)h0[i]);
-        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x100 + i * 2 + 1, (uint32_t)(h0[i] >> 32));
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_H0_BASE_ADDR + i * 4 * 2, (uint32_t)h0[i]);
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_H0_BASE_ADDR + i * 4 * 2 + 4, (uint32_t)(h0[i] >> 32));
     }
     //initial write the code0 reg
-    for (u_int32_t i = 0; i <= 70; i++)
+    for (u_int32_t i = 0; i <= FPGA_CODE0_SIZE - 1; i++)
     {
         op = code0 + i;
         temp = op->C;
-        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x000 + i * 2, temp);
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CODE0_BASE_ADDR + i * 4 * 2, temp);
         temp = (op->opcode << 16) + (op->dst_index << 8) + op->src_index;
-        fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x000 + i * 2 + 1, temp);
+        fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CODE0_BASE_ADDR + i * 4 * 2 + 4, temp);
     }
     //write the ret opcode
     temp = (0x6 << 16);
-    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x000 + 70 * 2 + 1, temp);
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CODE0_BASE_ADDR + 70 * 2 * 4 + 4, temp);
     //initial write the 2M memory DMA
-    dma_to_fpga(DEVICE_NAME_DMA_H2C_0, 0x0, 2097152, l0);
+    dma_to_fpga(DEVICE_NAME_DMA_H2C_0, FPGA_SINGLE_MEM_SIZE * core_id, FPGA_SINGLE_MEM_SIZE, l0);
 
     //start the crypto core
-    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x200, 0x1);
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CONTROL_REG_ADDR_OFFSET, FPGA_CORE_CNTL_START_MASK);
 
     //check the status for crypto done
-    temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
+    temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_STATUS_REG_ADDR_OFFSET);
     //printf("temp = %x\n", temp);
-    while ((temp & 0x1) == 0)
+    while ((temp & FPGA_CORE_STASUS_FINISHED_MASK) == 0)
     {
         //printf("core busy!\n");
-        temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, 0x200);
+        temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_STATUS_REG_ADDR_OFFSET);
         i++;
         if (i == 0x2fffffff)
         {
@@ -336,9 +324,9 @@ uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0)
         }
     }
     //dma read
-    dma_from_fpga(DEVICE_NAME_DMA_C2H_0, 0x0, 2097152, l0);
+    dma_from_fpga(DEVICE_NAME_DMA_C2H_0, FPGA_SINGLE_MEM_SIZE * core_id, FPGA_SINGLE_MEM_SIZE, l0);
     //clear the status flag
-    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x201, 0x0);
+    fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_STATUS_FLAG_CLEAR_ADDR_OFFSET, 0x0);
     //    fpga_reg_wr(DEVICE_NAME_FOR_USER, 0x202, 0x0);
     return 0;
 }
@@ -968,8 +956,18 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
 #ifdef XMRIG_FPGA_VCU1525
         if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
         {
+            u_int32_t core_id = 0;
             mtx.lock();
-            fpga_memory_hard_loop(const_cast<uint8_t *>(l0), h0, code0);
+            while (myStack.size() == 0)
+            {
+                usleep(3);
+            }
+            core_id = myStack.top();
+            myStack.pop();
+            mtx.unlock();
+            fpga_memory_hard_loop(const_cast<uint8_t *>(l0), h0, code0, core_id);
+            mtx.lock();
+            myStack.push(core_id);
             mtx.unlock();
         }
         else

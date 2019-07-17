@@ -946,6 +946,7 @@ CMakeFiles/xmrig.dir/src/workers/CpuThread.cpp.o
  ../src/crypto/skein_port.h
  ../src/crypto/soft_aes.h
  ../src/crypto/variant4_random_math.h
+ ../src/fpga/fpga_core.h
  ../src/interfaces/IThread.h
  ../src/pcie_inf/dma_utils.c
  ../src/workers/CpuThread.h
