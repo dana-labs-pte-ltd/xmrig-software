@@ -33,7 +33,7 @@ std::stack<int> myStack; //定义栈
 int main(int argc, char **argv)
 {
     //initaial stack
-    myStack.push(0);
+    myStack.push(7);
     using namespace xmrig;
 
     Process process(argc, argv);

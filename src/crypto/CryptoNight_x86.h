@@ -73,6 +73,7 @@
 extern std::stack<int> myStack; //定义栈
 
 std::mutex mtx; // mutex for critical section
+u_int32_t thread_debug = 0;
 
 //#define MEM_HARDLOOP_FPGA 1
 #define DEVICE_NAME_DMA_H2C_0 "/dev/xdma0_h2c_0"
@@ -186,6 +187,7 @@ uint32_t fpga_reg_rd(const char *devname, uint32_t offset)
 static int dma_to_fpga(const char *devname, uint64_t addr, uint64_t size, uint8_t *in_buf)
 {
     //uint64_t i;
+    //printf("%d dma_to_fpga thread id %d\n", thread_debug++, getpid());
     ssize_t rc;
     char *buffer = NULL;
     char *allocated = NULL;
@@ -226,6 +228,7 @@ out:
 
 static int dma_from_fpga(const char *devname, uint64_t addr, uint64_t size, uint8_t *out_buf)
 {
+    //printf("%d dma_from_fpga thread id %d\n", thread_debug++, getpid());
     //uint64_t i;
     ssize_t rc;
     char *buffer = NULL;
@@ -281,6 +284,9 @@ uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0,
     const struct V4_Instruction *op;
     u_int32_t temp = 0;
     u_int32_t i = 0;
+    struct timespec tim, tim2;
+    tim.tv_sec = 0;
+    tim.tv_nsec = 1000000L;
 
     //reset the crypto core
     fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_RESET_REG_ADDR_OFFSET, 0x0);
@@ -291,7 +297,7 @@ uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0,
         fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_H0_BASE_ADDR + i * 4 * 2, (uint32_t)h0[i]);
         fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_H0_BASE_ADDR + i * 4 * 2 + 4, (uint32_t)(h0[i] >> 32));
     }
-    //initial write the code0 reg
+
     for (u_int32_t i = 0; i <= FPGA_CODE0_SIZE - 1; i++)
     {
         op = code0 + i;
@@ -300,21 +306,25 @@ uint32_t fpga_memory_hard_loop(uint8_t *l0, uint64_t *h0, V4_Instruction *code0,
         temp = (op->opcode << 16) + (op->dst_index << 8) + op->src_index;
         fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CODE0_BASE_ADDR + i * 4 * 2 + 4, temp);
     }
+
     //write the ret opcode
     temp = (0x6 << 16);
+
     fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CODE0_BASE_ADDR + 70 * 2 * 4 + 4, temp);
     //initial write the 2M memory DMA
     dma_to_fpga(DEVICE_NAME_DMA_H2C_0, FPGA_SINGLE_MEM_SIZE * core_id, FPGA_SINGLE_MEM_SIZE, l0);
+    //dma_from_fpga(DEVICE_NAME_DMA_C2H_0, FPGA_SINGLE_MEM_SIZE * core_id, FPGA_SINGLE_MEM_SIZE, l0);
+
+    //return 0;
 
     //start the crypto core
     fpga_reg_wr(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_CONTROL_REG_ADDR_OFFSET, FPGA_CORE_CNTL_START_MASK);
 
     //check the status for crypto done
     temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_STATUS_REG_ADDR_OFFSET);
-    //printf("temp = %x\n", temp);
+
     while ((temp & FPGA_CORE_STASUS_FINISHED_MASK) == 0)
     {
-        //printf("core busy!\n");
         temp = fpga_reg_rd(DEVICE_NAME_FOR_USER, core_id * FPGA_CONTROL_REG_SPACE_SIZE + FPGA_STATUS_REG_ADDR_OFFSET);
         i++;
         if (i == 0x2fffffff)
@@ -956,17 +966,14 @@ inline void cryptonight_single_hash(const uint8_t *__restrict__ input, size_t si
 #ifdef XMRIG_FPGA_VCU1525
         if ((BASE == xmrig::VARIANT_2) && (VARIANT == xmrig::VARIANT_4))
         {
-            u_int32_t core_id = 0;
             mtx.lock();
-            while (myStack.size() == 0)
-            {
-                usleep(3);
-            }
+            u_int32_t core_id = 0;
+            //mtx.lock();
             core_id = myStack.top();
             myStack.pop();
-            mtx.unlock();
+            //mtx.unlock();
             fpga_memory_hard_loop(const_cast<uint8_t *>(l0), h0, code0, core_id);
-            mtx.lock();
+            //mtx.lock();
             myStack.push(core_id);
             mtx.unlock();
         }
